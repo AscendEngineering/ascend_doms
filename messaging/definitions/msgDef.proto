@@ -1,43 +1,47 @@
 syntax = "proto2";
-​
 package ascend;
-​
+
 message heartbeat_msg {
   required double lng = 1;
   required double lat = 2;
   required double alt = 3;
   required int32 bat_percentage = 4;
 }
-​
+
 message emergency_msg {
   required string name = 1;
 }
-​
+
+message landing_request_msg {
+  required string name = 1;
+}
+
 message OffsetList_msg {
   repeated Offset offsets =1;
 }
-​
+
 message Offset {
   required double x = 1;
   required double y = 2;
   required double z = 3;
 }
-​
+
 message WaypointList_msg {
   repeated Waypoint waypoints = 2;
 }
-​
+
 message Waypoint {
-  required float longitude = 1;
-  required float latitude = 2;
-  required float altitude = 3;
+  required float lng = 1;
+  required float lat = 2;
+  required float alt = 3;
 }
-​
+
 message msg {
   oneof type {
       heartbeat_msg heartbeat = 1;
       emergency_msg emergency = 2;
-      OffsetList_msg offsets = 3;
-      WaypointList_msg waypoints = 4;
+      landing_request_msg landing_request = 3;
+      OffsetList_msg offsets = 4;
+      WaypointList_msg waypoints = 5;
   }   
 }
