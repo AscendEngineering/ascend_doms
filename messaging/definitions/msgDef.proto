@@ -34,10 +34,10 @@ message Waypoint {
 }
 ​
 message msg {
-    oneof type {
-        heartbeat_msg heartbeat = 1;
-        emergency_msg emergency = 2;
-        OffsetList_msg offsets = 3;
-        WaypointList_msg waypoints = 4;
-    }   
+  oneof type {
+      heartbeat_msg heartbeat = 1;
+      emergency_msg emergency = 2;
+      OffsetList_msg offsets = 3;
+      WaypointList_msg waypoints = 4;
+  }   
 }
