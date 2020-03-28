@@ -9,11 +9,11 @@ message heartbeat_msg {
 }
 
 message emergency_msg {
-  required string name = 1;
+  required string msg = 1;
 }
 
 message landing_request_msg {
-  required string name = 1;
+  required string msg = 1;
 }
 
 message offsetList_msg {
@@ -37,11 +37,12 @@ message waypoint_point {
 }
 
 message msg {
+  required string name = 1;
   oneof type {
-      heartbeat_msg heartbeat = 1;
-      emergency_msg emergency = 2;
-      landing_request_msg landing_request = 3;
-      offsetList_msg offsets = 4;
-      waypointList_msg waypoints = 5;
+    heartbeat_msg heartbeat = 2;
+    emergency_msg emergency = 3;
+    landing_request_msg landing_request = 4;
+    offsetList_msg offsets = 5;
+    waypointList_msg waypoints = 6;
   }   
 }
