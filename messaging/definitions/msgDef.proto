@@ -8,6 +8,15 @@ message heartbeat_msg {
   required int32 bat_percentage = 4;
 }
 
+message object_info_msg {
+  required string object = 1;
+  required int32 confidence_percentage = 2;
+  required double left_x = 3;
+  required double right_x = 4;
+  required double bottom_y = 5;
+  required double top_y = 6;
+}
+
 message emergency_msg {
   required string msg = 1;
 }
@@ -24,6 +33,7 @@ message move_offset {
   required double x = 1;
   required double y = 2;
   required double z = 3;
+  required double rate = 4;
 }
 
 message waypointList_msg {
@@ -38,11 +48,12 @@ message waypoint_point {
 
 message msg {
   required string name = 1;
-  oneof type {
+    oneof type {
     heartbeat_msg heartbeat = 2;
     emergency_msg emergency = 3;
     landing_request_msg landing_request = 4;
     offsetList_msg offsets = 5;
     waypointList_msg waypoints = 6;
-  }   
-}
+    object_info_msg object_info = 7;
+  }
+}   
