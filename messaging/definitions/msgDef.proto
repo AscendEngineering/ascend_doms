@@ -48,7 +48,7 @@ message waypoint_point {
 
 message msg {
   required string name = 1;
-    oneof type {
+  oneof type {
     heartbeat_msg heartbeat = 2;
     emergency_msg emergency = 3;
     landing_request_msg landing_request = 4;
