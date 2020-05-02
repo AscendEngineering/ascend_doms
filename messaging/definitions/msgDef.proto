@@ -1,6 +1,17 @@
 syntax = "proto2";
 package ascend;
 
+enum drone_status {
+  AVAILABLE = 0;
+  IN_USE = 1;
+  REPAIR = 2;
+  RETIRED = 3;
+}
+
+message status_change_msg {
+  required drone_status status = 1; 
+}
+
 message heartbeat_msg {
   required double lat = 1;
   required double lng = 2;
@@ -44,5 +55,6 @@ message msg {
     landing_request_msg landing_request = 4;
     offsetList_msg offsets = 5;
     waypointList_msg waypoints = 6;
+    status_change_msg status = 7;
   }   
 }
