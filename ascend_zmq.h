@@ -11,7 +11,6 @@ namespace comm {
     void get_msg_header(zmq::socket_t & socket, std::string& sender, std::string& op);
     std::string get_msg_data(zmq::socket_t & socket);
 
-
 }
 
 

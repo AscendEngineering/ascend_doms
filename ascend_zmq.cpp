@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include "utilities.h"
 
 
 namespace comm {
@@ -17,7 +18,24 @@ namespace comm {
 
     bool connect(zmq::socket_t & socket, const std::string & ip_address){
 
-        socket.connect(ip_address);
+        //split up
+        std::string port = ip_address.substr(ip_address.find(":"));
+        std::string url = ip_address.substr(0,ip_address.find(":"));
+
+        //sanity
+        if(port=="" || url==""){
+            return false;
+        }
+
+        //resolve DNS
+        std::string connect_to = "tcp://" + utilities::resolveDNS(url) + port;
+        try{
+            
+            socket.connect(connect_to);
+        }catch (...){
+            std::cerr << "Error connecting to " << connect_to << std::endl;
+            return false;
+        }
 
         return true;
     }
@@ -106,7 +124,6 @@ namespace comm {
 
         //get operation
         op = recv_packet(socket);
-
     }
 
 
