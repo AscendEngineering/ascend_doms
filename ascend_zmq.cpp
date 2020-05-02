@@ -18,21 +18,33 @@ namespace comm {
 
     bool connect(zmq::socket_t & socket, const std::string & ip_address){
 
-        //split up
-        std::string port = ip_address.substr(ip_address.find(":"));
-        std::string url = ip_address.substr(0,ip_address.find(":"));
+        //split address,port
+        std::string port = "";
+        std::string url = "";
+        try
+        {
+            port = ip_address.substr(ip_address.find(":"));
+            url = ip_address.substr(0,ip_address.find(":"));
+        }catch(...)
+        {
+            std::cerr << "Ill formed URL: " << ip_address << std::endl;
+            return false;
+        }
 
         //sanity
-        if(port=="" || url==""){
+        if(port=="" || url=="")
+        {
+            std::cerr << "Ill formed URL: " << ip_address << std::endl;
             return false;
         }
 
         //resolve DNS
         std::string connect_to = "tcp://" + utilities::resolveDNS(url) + port;
-        try{
-            
+        try
+        {
             socket.connect(connect_to);
-        }catch (...){
+        }catch (...)
+        {
             std::cerr << "Error connecting to " << connect_to << std::endl;
             return false;
         }
