@@ -10,4 +10,12 @@ namespace constants{
     static const std::string from_drone = "5555";
     static const std::string video_port = "5000";
 
+    //matches with enum in tables.sql
+    enum status{
+        AVAILABLE,
+        IN_USE,
+        REPAIR,
+        RETIRED,
+    };
+
 }
