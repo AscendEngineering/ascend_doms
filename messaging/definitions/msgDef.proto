@@ -32,8 +32,16 @@ message emergency_msg {
   required string msg = 1;
 }
 
+message takeoff_request_msg {
+  required double curr_lat = 1;
+  required double curr_lng = 2;
+  required double desired_alt = 3;
+}
+
 message landing_request_msg {
-  required string msg = 1;
+  required double desired_lat = 1;
+  required double desired_lng = 2;
+  required double current_alt = 3;
 }
 
 message offsetList_msg {
