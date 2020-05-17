@@ -70,10 +70,11 @@ message msg {
   oneof type {
     heartbeat_msg heartbeat = 2;
     emergency_msg emergency = 3;
-    landing_request_msg landing_request = 4;
-    offsetList_msg offsets = 5;
-    waypointList_msg waypoints = 6;
-    object_info_msg object_info = 7;
-    status_change_msg status = 8;
+    takeoff_request_msg takeoff_request = 4;
+    landing_request_msg landing_request = 5;
+    offsetList_msg offsets = 6;
+    waypointList_msg waypoints = 7;
+    object_info_msg object_info = 8;
+    status_change_msg status = 9;
   }
 }   
