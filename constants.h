@@ -18,4 +18,6 @@ namespace constants{
         RETIRED,
     };
 
+    static const int max_waittime = 15;
+
 }

@@ -36,12 +36,14 @@ message takeoff_request_msg {
   required double curr_lat = 1;
   required double curr_lng = 2;
   required double desired_alt = 3;
+  optional bool granted = 4;
 }
 
 message landing_request_msg {
   required double desired_lat = 1;
   required double desired_lng = 2;
   required double current_alt = 3;
+  optional bool granted = 4;
 }
 
 message offsetList_msg {
@@ -65,6 +67,11 @@ message waypoint_point {
   required double alt = 3;
 }
 
+message manual_control_msg {
+  optional string operator_address = 1;
+  optional bool granted = 2;
+}
+
 message msg {
   required string name = 1;
   oneof type {
@@ -76,5 +83,6 @@ message msg {
     waypointList_msg waypoints = 7;
     object_info_msg object_info = 8;
     status_change_msg status = 9;
+    manual_control_msg manual_control = 10;
   }
 }   
