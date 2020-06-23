@@ -2,12 +2,14 @@
 #include <string>
 #include <iostream>
 #include <chrono>
+#include <cctype>
 
 
 
 bool is_ip(const std::string& url){
     for(auto character: url){
-        if(isalpha(character)){return false;}
+        bool ip_char = isdigit(character) || character=='.';
+        if(!ip_char){return false;}
     }
     return true;
 }
