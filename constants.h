@@ -10,6 +10,8 @@ namespace constants{
     static const std::string from_drone = "5555";
     static const std::string video_port = "5000";
 
+    static const std::string video_file = "/var/tmp/video_ip";
+
     //matches with enum in tables.sql
     enum status{
         AVAILABLE,
