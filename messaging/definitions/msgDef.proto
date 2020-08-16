@@ -43,18 +43,19 @@ message landing_request_msg {
   required double desired_lat = 1;
   required double desired_lng = 2;
   required double current_alt = 3;
-  optional bool granted = 4;
+  required string temp_ip = 4;
+  optional bool granted = 5;
 }
 
-message offsetList_msg {
-  repeated move_offset offset =1;
+message stop_remote_conn {
+  required bool succ = 1;
 }
 
 message move_offset {
-  required double x = 1;
-  required double y = 2;
-  required double z = 3;
-  required double rate = 4;
+  required float x = 1;
+  required float y = 2;
+  required float z = 3;
+  required float rate = 4;
 }
 
 message waypointList_msg {
@@ -79,10 +80,11 @@ message msg {
     emergency_msg emergency = 3;
     takeoff_request_msg takeoff_request = 4;
     landing_request_msg landing_request = 5;
-    offsetList_msg offsets = 6;
+    move_offset offset = 6;
     waypointList_msg waypoints = 7;
     object_info_msg object_info = 8;
     status_change_msg status = 9;
     manual_control_msg manual_control = 10;
+    stop_remote_conn stop_remote = 11;
   }
 }   
