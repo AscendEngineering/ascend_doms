@@ -8,6 +8,11 @@ enum drone_status {
   RETIRED = 3;
 }
 
+enum cmd {
+  takeoff = 0;
+  land = 1;
+}
+
 message status_change_msg {
   required drone_status status = 1; 
 }
@@ -45,6 +50,10 @@ message landing_request_msg {
   required double current_alt = 3;
   required string temp_ip = 4;
   optional bool granted = 5;
+}
+
+message action_command {
+  required cmd action = 1;
 }
 
 message stop_remote_conn {
