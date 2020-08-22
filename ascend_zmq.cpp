@@ -126,26 +126,26 @@ namespace comm {
     void get_msg_header(zmq::socket_t & socket, std::string& sender, std::string& op){
         
         //sender
-        sender = recv_packet(socket);
+        // sender = recv_packet(socket);
 
-        //get the delimiter
-        std::string delimit = recv_packet(socket);
-        if(delimit != ""){
-            throw std::runtime_error("Delimit not empty");
-        }
+        // //get the delimiter
+        // std::string delimit = recv_packet(socket);
+        // if(delimit != ""){
+        //     throw std::runtime_error("Delimit not empty");
+        // }
 
-        //get operation
-        op = recv_packet(socket);
+        // //get operation
+        // op = recv_packet(socket);
     }
 
 
     std::string get_msg_data(zmq::socket_t & socket){
         
-        //get the delimeter
-        std::string delimit = recv_packet(socket);
-        if(delimit != ""){
-            throw std::runtime_error("Delimit not empty");
-        }
+        // //get the delimeter
+        // std::string delimit = recv_packet(socket);
+        // if(delimit != ""){
+        //     throw std::runtime_error("Delimit not empty");
+        // }
 
         //return data
         return recv_packet(socket);

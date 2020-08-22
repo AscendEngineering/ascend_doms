@@ -11,9 +11,16 @@
 
 
 namespace utilities{
+    
+    //functions
     std::string resolveDNS(const std::string& url);
     std::string my_public_ip();
+    void line_buffer(bool on = true);
+    std::string get_term_input();
     long now_epoch();
+
+    //vars
+    const int STDIN = 0;
 }
 
 

@@ -16,6 +16,12 @@
 #include <cstdio>
 #include <array>
 
+#include <stdio.h>
+#include <sys/select.h>
+#include <termios.h>
+#include <stropts.h>
+#include <sys/ioctl.h>
+
 using tcp = boost::asio::ip::tcp;       // from <boost/asio/ip/tcp.hpp>
 namespace http = boost::beast::http;    // from <boost/beast/http.hpp>
 
@@ -63,6 +69,33 @@ std::string utilities::my_public_ip(){
     }
     auto returnCode = pclose(pipe);
     return result;
+}
+
+void utilities::line_buffer(bool on){
+    
+    termios term;
+	tcgetattr(STDIN, &term);
+	if(on){
+	    term.c_lflag |= ICANON;
+	    
+	}
+	else{
+		term.c_lflag &= ~ICANON;
+	}
+	tcsetattr(STDIN, TCSANOW, &term);
+    
+}
+
+std::string utilities::get_term_input(){
+
+    std::string retval;
+    int bytesWaiting;
+    ioctl(STDIN, FIONREAD, &bytesWaiting);
+    for(int i =0; i< bytesWaiting; i++){
+        retval+=getchar();
+    }
+
+    return retval;
 }
 
 

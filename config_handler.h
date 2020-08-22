@@ -7,7 +7,7 @@ class config_handler {
 
     public:
         static config_handler& instance(){
-            static config_handler instance("config.txt");
+            static config_handler instance("drone_settings.txt");
             return instance;
         }
         
@@ -25,7 +25,7 @@ class config_handler {
         bool stale();
         long int get_last_modified_timestamp();
         config_handler(){};
-        config_handler(std::string filename="config.txt");
+        config_handler(std::string filename="drone_settings.txt");
         config_handler(const config_handler&);
         void operator=(config_handler const&);
  
