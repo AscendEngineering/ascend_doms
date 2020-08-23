@@ -8,6 +8,13 @@ enum drone_status {
   RETIRED = 3;
 }
 
+enum action_cmd_enum{
+  TAKEOFF = 0;
+  LAND = 1;
+  PICKUP_PACKAGE = 2;
+  DROPOFF_PACKAGE = 3;
+}
+
 message status_change_msg {
   required drone_status status = 1; 
 }
@@ -51,6 +58,10 @@ message stop_remote_conn {
   required bool succ = 1;
 }
 
+message action_cmd_msg {
+  required action_cmd_enum cmd = 1;
+}
+
 message move_offset {
   required float x = 1;
   required float y = 2;
@@ -86,5 +97,6 @@ message msg {
     status_change_msg status = 9;
     manual_control_msg manual_control = 10;
     stop_remote_conn stop_remote = 11;
+    action_cmd_msg action_cmd = 12;
   }
 }   
