@@ -20,7 +20,7 @@ message move_offset {
   required float x = 1;
   required float y = 2;
   required float z = 3;
-  required float yaw = 4
+  required float yaw = 4;
   required float rate = 5;
 }
 
