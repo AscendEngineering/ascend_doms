@@ -109,10 +109,10 @@ namespace comm {
         }
 
         //send
-        retval &= comm::send_packet(socket,our_name, ZMQ_SNDMORE);
-        retval &= comm::send_packet(socket,"", ZMQ_SNDMORE);
-        retval &= comm::send_packet(socket,"O",ZMQ_SNDMORE);
-        retval &= comm::send_packet(socket,"",ZMQ_SNDMORE);
+        // retval &= comm::send_packet(socket,our_name, ZMQ_SNDMORE);
+        // retval &= comm::send_packet(socket,"", ZMQ_SNDMORE);
+        // retval &= comm::send_packet(socket,"O",ZMQ_SNDMORE);
+        // retval &= comm::send_packet(socket,"",ZMQ_SNDMORE);
         retval &= comm::send_packet(socket,data);
 
         //disconnect
