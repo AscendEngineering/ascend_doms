@@ -106,6 +106,13 @@ long utilities::now_epoch(){
     return seconds.count();
 }
 
-
+std::string utilities::timestamp(){
+    std::time_t now = std::time(nullptr);
+    std::tm * ptm = std::localtime(&now);
+    char buffer[100];
+    // Format: Mo, 15.06.2009 20:20:00
+    std::strftime(buffer, 70, "%F_%C", ptm); 
+    return std::string(buffer);
+}
 
 
